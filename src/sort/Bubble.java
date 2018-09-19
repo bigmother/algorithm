@@ -4,7 +4,7 @@ package sort;
  * author: xuzhemin
  * 2018/9/18 11:45
  * 冒泡排序
- * 时间复杂度 log(n^2)
+ * 时间复杂度 O(n^2)
  */
 public class Bubble {
 

@@ -3,6 +3,8 @@ package sort;
 /**
  * author: xuzhemin
  * 2018/9/18 14:11
+ * 快速排序
+ * 时间复杂度O(n*log(n))
  */
 public class Quick {
 
