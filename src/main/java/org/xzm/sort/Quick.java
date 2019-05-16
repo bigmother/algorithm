@@ -1,4 +1,4 @@
-package sort;
+package org.xzm.sort;
 
 /**
  * author: xuzhemin
@@ -57,7 +57,7 @@ public class Quick {
         return arr;
     }
 
-    public static int[] swap(int[] arr,int s,int t){
+    private static int[] swap(int[] arr,int s,int t){
         int tmp = arr[s];
         arr[s] = arr[t];
         arr[t] = tmp;
