@@ -7,40 +7,30 @@ public class Solution {
     }
 
     public String longestPalindrome(String s) {
-        char[] chars = s.toCharArray();
-        char[] palindrome = new char[chars.length];
-        String maxPalindrome = "";
-        int maxLen = 0;
-        for (int i = 0; i < chars.length; i++) {
-            int len;
-            for (int j = i; j < chars.length; j++) {
-                //拼接字符串
-                len = j - i + 1;
-                palindrome[len - 1] = chars[j];
-                //检验是否是回文字符串
-                if (len > maxLen && isPalindrome(palindrome, len)) {
-                    String str = new String(palindrome, 0, len);
-                    //System.out.println("回文字符串: " + str);
-                    //如果比最长回文长，替换最长回文
-                    maxLen = len;
-                    maxPalindrome = str;
+        byte[] chars = s.getBytes();
+        for (int len = chars.length; len > 0; len--) {
+            for (int i = 0; i < chars.length - len + 1; i++) {
+                if (isPalindrome(chars, i, len)) {
+                    return new String(chars, i, len);
                 }
             }
         }
-        return maxPalindrome;
+        return null;
     }
 
-    private boolean isPalindrome(char[] str, int len) {
+    private boolean isPalindrome(byte[] str, int offset, int len) {
         if (len == 1) {
             return true;
         }
-        int k = len % 2 == 0 ? len / 2 - 1 : len / 2;
-        for (int i = 0; i <= k; i++) {
-            int j = len - 1 - i;
-            if (i == j) {
+        //比较的次数，长度的1/2
+        int n = len % 2 == 0 ? len / 2 : len / 2 + 1;
+        for (int i = 0; i < n; i++) {
+            int f = i+offset;
+            int j = len - 1 - i + offset;
+            if (f == j) {
                 return true;
             }
-            if (str[i] != str[j]) {
+            if (str[f] != str[j]) {
                 return false;
             }
         }
